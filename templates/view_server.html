@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('tracking_image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header, .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .details {
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        .details h2 {
+            margin-top: 0;
+        }
+        nav {
+            text-align: center;
+        }
+        nav a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('signup') }}">Sign Up</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="details">
+            <h2>Server Details</h2>
+            <p><strong>Server Name:</strong> {{ server.server_name }}</p>
+            <p><strong>CPU Allocated:</strong> {{ server.cpu_allocated }}</p>
+            <p><strong>Memory Allocated:</strong> {{ server.memory_allocated }}</p>
+            <p><strong>Uptime:</strong> {{ server.uptime }}</p>
+            <p><strong>Last Patch:</strong> {{ server.last_patch }}</p>
+            <p><strong>Installed Apps:</strong> {{ server.installed_apps }}</p>
+            <p><strong>DNS Name:</strong> {{ server.dns_name }}</p>
+            <p><strong>IP Address:</strong> {{ server.ip_address }}</p>
+            <p><strong>Server Owner:</strong> {{ server.server_owner }}</p>
+            <p><strong>Application Owner:</strong> {{ server.application_owner }}</p>
+            <p><strong>Application Description:</strong> {{ server.application_description }}</p>
+            <p><strong>Disk Space Allocated:</strong> {{ server.disk_space_allocated }}</p>
+            <p><strong>OS Version:</strong> {{ server.os_version }}</p>
+            <p><strong>Last Run Time:</strong> {{ server.last_run_time }}</p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Your Website</p>
+    </div>
+</body>
+</html>

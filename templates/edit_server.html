@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Server</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #181818;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #20232a;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .navbar img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .container {
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+        }
+        h2 {
+            color: #61dafb;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            background-color: #282c34;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .form-container label {
+            color: #61dafb;
+        }
+        .form-container input, .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .form-container button {
+            background-color: #61dafb;
+            color: #20232a;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #21a1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar d-flex justify-content-between align-items-center p-3">
+        <div>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </div>
+        <div class="d-flex align-items-center">
+            <img src="{{ url_for('static', filename='profile.jpg') }}" alt="Profile">
+            <span>{{ session['username'] }}</span>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Edit Server</h2>
+            <div class="form-container">
+                <form method="POST" action="{{ url_for('update_server', server_id=server.id) }}">
+                    <label for="server_name">Server Name:</label>
+                    <input type="text" id="server_name" name="server_name" value="{{ server.server_name }}" required>
+                    
+                    <label for="cpu_allocated">CPU Allocated:</label>
+                    <input type="text" id="cpu_allocated" name="cpu_allocated" value="{{ server.cpu_allocated }}" required>
+                    
+                    <label for="memory_allocated">Memory Allocated:</label>
+                    <input type="text" id="memory_allocated" name="memory_allocated" value="{{ server.memory_allocated }}" required>
+                    
+                    <label for="uptime">Uptime:</label>
+                    <input type="text" id="uptime" name="uptime" value="{{ server.uptime }}" required>
+                    
+                    <label for="last_patch">Last Patch:</label>
+                    <input type="text" id="last_patch" name="last_patch" value="{{ server.last_patch }}" required>
+                    
+                    <label for="installed_apps">Installed Apps:</label>
+                    <input type="text" id="installed_apps" name="installed_apps" value="{{ server.installed_apps }}" required>
+                    
+                    <label for="dns_name">DNS Name:</label>
+                    <input type="text" id="dns_name" name="dns_name" value="{{ server.dns_name }}" required>
+                    
+                    <label for="ip_address">IP Address:</label>
+                    <input type="text" id="ip_address" name="ip_address" value="{{ server.ip_address }}" required>
+                    
+                    <label for="server_owner">Server Owner:</label>
+                    <input type="text" id="server_owner" name="server_owner" value="{{ server.server_owner }}" required>
+                    
+                    <label for="application_owner">Application Owner:</label>
+                    <input type="text" id="application_owner" name="application_owner" value="{{ server.application_owner }}" required>
+                    
+                    <label for="application_description">Application Description:</label>
+                    <input type="text" id="application_description" name="application_description" value="{{ server.application_description }}" required>
+                    
+                    <label for="disk_space_allocated">Disk Space Allocated:</label>
+                    <input type="text" id="disk_space_allocated" name="disk_space_allocated" value="{{ server.disk_space_allocated }}" required>
+                    
+                    <label for="os_version">OS Version:</label>
+                    <input type="text" id="os_version" name="os_version" value="{{ server.os_version }}" required>
+                    
+                    <label for="last_run_time">Last Run Time:</label>
+                    <input type="datetime-local" id="last_run_time" name="last_run_time" value="{{ server.last_run_time }}" required>
+                    
+                    <button type="submit">Update Server</button>
+                </form>
+            </div>
+        </div>
+    </body>
+    </html>
+    
